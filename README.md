@@ -1,10 +1,8 @@
 # clj-custom-linters-example
 
-An example repo showing how to
-use
-[custom linters with Eastwood](https://github.com/jonase/eastwood/pull/239). To
-try it yourself, check out that branch of Eastwood and run `lein
-install`.
+An example repo showing how to use a
+[proposed new Eastwood feature allowing for custom linters]((https://github.com/jonase/eastwood/pull/239).
+To try it yourself, check out that branch of Eastwood and run `lein install`.
 
 Then run `lein eastwood` on this project. Your output will look like
 this:
