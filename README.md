@@ -26,6 +26,35 @@ contain calls to `eastwood.util/add-linter`, those linters will be
 included when you run Eastwood, and reported alongside any built-in
 lint warnings.
 
+# Writing a custom linter
+
+An Eastwood linter accepts two arguments:
+
+  * `analyze-results`: The return value of
+     [Eastwood's `analyze-ns`](https://github.com/jonase/eastwood/blob/master/src/eastwood/analyze_ns.clj#L320).
+     It's an augmented form of what `clojure.tools.analyzer`
+     outputs. The quickest way to see what this looks like is to explore the
+     (very large) output of
+     [`eastwood.lint/insp`](https://github.com/jonase/eastwood/blob/master/src/eastwood/lint.clj#L1316).
+  * `opts`: The Eastwood options map. It gets processed a bit beyond
+    what was directly in your `project.clj` or `profiles.clj`.
+
+An Eastwood linter returns a sequence of
+ [lint warning maps](https://github.com/MatthewDarling/clj-custom-linters-example/blob/master/linters/doc_lints.clj#L31-L34).
+
+Your custom linters can be arbitrarily complex, with only two
+significant restrictions:
+
+  1. You can't use any dependencies that Eastwood itself doesn't use.
+  2. You have to analyze one namespace at a time.
+
+Check out
+the
+[linter that checks public functions for docstrings](https://github.com/MatthewDarling/clj-custom-linters-example/blob/master/linters/doc_lints.clj) for
+a simple example, and the [linter for public functions to have
+`clojure.spec` definitions](https://github.com/MatthewDarling/clj-custom-linters-example/blob/master/linters/spec_lints.clj) for
+a more complex example.
+
 ## License
 
 Copyright © 2017 Matthew Darling
