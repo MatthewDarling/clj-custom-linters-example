@@ -2,7 +2,7 @@
 
 An example repo showing how to use a
 [proposed new Eastwood feature allowing for custom linters](https://github.com/jonase/eastwood/pull/239).
-To try it yourself, check out that branch of Eastwood and run `lein install`.
+ To try it yourself, check out that branch of Eastwood and run `lein install`.
 
 Then run `lein eastwood` on this project. Your output will look like
 this:
@@ -19,10 +19,12 @@ src/clj_custom_linters_example/core.clj:1:1: spec-for-every-public-fn: #'clj-cus
 == Warnings: 2 (not including reflection warnings)  Exceptions thrown: 0
 ```
 
-The files listed in the `:lint-files` argument of the `:eastwood`
-configuration are evaluated by Eastwood. If they contain calls to
-`eastwood.util/add-linter`, those linters will be included when you
-run Eastwood, and reported alongside any built-in lint warnings.
+The files listed in the
+ [`:lint-files` argument](https://github.com/MatthewDarling/clj-custom-linters-example/blob/master/project.clj#L9)
+ of the `:eastwood` configuration are evaluated by Eastwood. If they
+contain calls to `eastwood.util/add-linter`, those linters will be
+included when you run Eastwood, and reported alongside any built-in
+lint warnings.
 
 ## License
 
