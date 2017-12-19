@@ -32,10 +32,16 @@ An Eastwood linter accepts two arguments:
 
   * `analyze-results`: The return value of
      [Eastwood's `analyze-ns`](https://github.com/jonase/eastwood/blob/master/src/eastwood/analyze_ns.clj#L320).
-     It's an augmented form of what `clojure.tools.analyzer`
-     outputs. The quickest way to see what this looks like is to explore the
-     (very large) output of
-     [`eastwood.lint/insp`](https://github.com/jonase/eastwood/blob/master/src/eastwood/lint.clj#L1316).
+     It's an augmented form of
+     `clojure.tools.analyzer/analyze+eval`. The
+     [tools.analyzer quickref](http://clojure.github.io/tools.analyzer/spec/quickref.html) is
+     very helpful to document where you will find the data
+     you're looking for. To play with the analysis of a namespace
+     you want to lint,
+     use
+     [`eastwood.lint/insp`](https://github.com/jonase/eastwood/blob/master/src/eastwood/lint.clj#L1316). Note
+     that the returned data structure is very, very large so you
+     probably don't want to print it to your REPL.
   * `opts`: The Eastwood options map. It gets processed a bit beyond
     what was directly in your `project.clj` or `profiles.clj`.
 
